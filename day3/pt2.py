@@ -44,6 +44,7 @@ def get_gear_ratio(char_index, line_index):
     # if 2 and only 2 adjacent part numbers were found return gear ratio
     if len(part_numbers) == 2:
         return int(part_numbers[0]) * int(part_numbers[1])
+    return 0
 
 total_sum = 0
 
@@ -54,9 +55,8 @@ for inner_list in engine_schematic:
     for char in inner_list:
         if char == "*":
             gear_ratio = get_gear_ratio(char_index, line_index)
-            if gear_ratio != None:
-                # add to running sum of gear ratios
-                total_sum += gear_ratio
+            # add to running sum of gear ratios
+            total_sum += gear_ratio
         char_index += 1
     line_index += 1
 
